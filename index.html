@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Srinij Reddy | Portfolio</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
+        }
+
+        body {
+          background: linear-gradient(135deg, #dfe9f3, #ffffff);
+          color: #222;
+        }
+
+        /* NAVBAR */
+        header {
+          width: 100%;
+          position: fixed;
+          top: 0;
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(10px);
+          z-index: 1000;
+          border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .navbar {
+          max-width: 1200px;
+          margin: auto;
+          padding: 15px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 26px;
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+
+        .logo span {
+          color: #0077ff;
+        }
+
+        .nav-links {
+          display: flex;
+          gap: 25px;
+          list-style: none;
+        }
+
+        .nav-links li a {
+          text-decoration: none;
+          color: #222;
+          font-weight: 500;
+          transition: 0.3s;
+        }
+
+        .nav-links li a:hover {
+          color: #0077ff;
+          transform: scale(1.1);
+        }
+
+        /* Burger menu */
+        .burger {
+          display: none;
+          cursor: pointer;
+        }
+
+        .burger span {
+          width: 28px;
+          height: 3px;
+          background: #222;
+          margin: 5px;
+          display: block;
+        }
+
+        /* HERO */
+        .hero {
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          padding: 0 20px;
+          position: relative;
+        }
+
+        /* Background soft glow */
+        .hero::before {
+          content: "";
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          background: rgba(0, 119, 255, 0.2);
+          border-radius: 50%;
+          top: 10%;
+          left: 10%;
+          filter: blur(120px);
+        }
+
+        .hero-photo {
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-bottom: 20px;
+          border: 4px solid #ffffff;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+          transition: 0.4s;
+        }
+
+        .hero-photo:hover {
+          transform: scale(1.08);
+        }
+
+        .hero-text h1 {
+          font-size: 42px;
+          font-weight: 700;
+        }
+
+        .hero-text h1 span {
+          color: #0077ff;
+        }
+
+        .hero-text h2 {
+          font-size: 22px;
+          margin-top: 10px;
+          font-weight: 500;
+        }
+
+        .hero-text p {
+          margin: 15px 0;
+          font-size: 18px;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 10px 22px;
+          background: #0077ff;
+          color: white;
+          text-decoration: none;
+          border-radius: 6px;
+          margin-top: 10px;
+          transition: 0.3s;
+        }
+
+        .btn:hover {
+          background: #005fcc;
+          transform: translateY(-3px);
+          box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* SECTIONS */
+        .section-title {
+          text-align: center;
+          font-size: 32px;
+          margin: 60px 0 20px 0;
+          font-weight: 700;
+        }
+
+        /* ABOUT */
+        .about {
+          padding: 0 20px;
+          max-width: 900px;
+          margin: auto;
+          text-align: center;
+        }
+
+        /* SKILLS */
+        .skills-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 20px;
+          padding: 20px;
+          max-width: 1100px;
+          margin: auto;
+        }
+
+        .skill-box {
+          background: rgba(255,255,255,0.7);
+          backdrop-filter: blur(10px);
+          padding: 20px;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          transition: 0.3s;
+        }
+
+        .skill-box:hover {
+          transform: translateY(-6px);
+        }
+
+        /* PROJECTS */
+        .project-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 20px;
+          padding: 20px;
+          max-width: 1100px;
+          margin: auto;
+        }
+
+        .project-card {
+          background: white;
+          padding: 20px;
+          border-radius: 12px;
+          border: 1px solid #ddd;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          transition: 0.3s;
+        }
+
+        .project-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .project-card h3 {
+          margin-bottom: 10px;
+        }
+
+        /* EXPERIENCE */
+        .exp-card {
+          background: rgba(255,255,255,0.8);
+          padding: 20px;
+          margin: 10px auto;
+          border-radius: 12px;
+          border: 1px solid #ddd;
+          max-width: 900px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* CONTACT */
+        .contact {
+          text-align: center;
+          padding: 20px;
+          margin-bottom: 30px;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+          .nav-links {
+            display: none;
+            flex-direction: column;
+            background: white;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          }
+
+          .burger {
+            display: block;
+          }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Srinij<span>Reddy</span></div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="burger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div>
+            <!-- Replace your-photo.jpg with your image file name -->
+            <img src="srinij.jpg" class="hero-photo" alt="Srinij Reddy">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Srinij Reddy</span></h1>
+                <h2>Java Full Stack Developer & ML/AI Enthusiast</h2>
+                <p>I build scalable applications using Java, Spring Boot, React, and ML models.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <p>
+            I am a passionate Full Stack Developer experienced in Java, Spring Boot, React, SQL,
+            Machine Learning, and Generative AI.  
+            I enjoy building real-world applications with clean architecture.
+        </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-container">
+            <div class="skill-box"><h3>Frontend</h3><p>React, JavaScript, HTML, CSS, Bootstrap</p></div>
+            <div class="skill-box"><h3>Backend</h3><p>Java, Spring Boot, REST APIs, JPA, Hibernate</p></div>
+            <div class="skill-box"><h3>Database</h3><p>MySQL, SQL, Indexing, Joins</p></div>
+            <div class="skill-box"><h3>AI/ML</h3><p>TensorFlow, Scikit-learn, Pandas, NumPy</p></div>
+            <div class="skill-box"><h3>Tools</h3><p>Git, GitHub, Postman, Maven, IntelliJ</p></div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-grid">
+
+            <div class="project-card">
+                <h3>Sky Ledger X</h3>
+                <p>Full Stack Retail Billing System using React + Spring Boot with 15+ APIs, MySQL & authentication.</p>
+                <a href="https://github.com/Srinijreddy09/Skyledgerx" class="btn" target="_blank">GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Flight Delay Prediction</h3>
+                <p>ML/DL models (RF, DT, LSTM) to predict flight delays using large aviation datasets.</p>
+                <a href="https://github.com/Srinijreddy09/FLIGHT-DELAY-PREDCTION-USING-MACHINE-LEARNING-AND-DEEP-LEARNING" class="btn" target="_blank">GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>User Admin Console</h3>
+                <p>Full Stack dashboard using React + Spring Boot with CRUD, search, filter, pagination.</p>
+                <a href="https://drive.google.com/file/d/1U7EI_1aeUKnLEU4hGgY6CMjrNHlnS-9v/view" class="btn" target="_blank">Demo</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="experience">
+        <h2 class="section-title">Experience</h2>
+
+        <div class="exp-card">
+            <h3>Java Full Stack Developer Intern — AccioJob</h3>
+            <p>Developed REST APIs, optimized SQL performance, implemented authentication, built UI components.</p>
+        </div>
+
+        <div class="exp-card">
+            <h3>Frontend Developer Intern — Innomatics Research Labs</h3>
+            <p>Created responsive UI, integrated APIs, improved accessibility & performance.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact</h2>
+        <p>Email: <strong>srinijreddy09@gmail.com</strong></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/srinij09" target="_blank">linkedin.com/in/srinij09</a></p>
+        <p>GitHub: <a href="https://github.com/Srinijreddy09" target="_blank">github.com/Srinijreddy09</a></p>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById("navLinks");
+            nav.style.display = nav.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+
+</body>
+</html>
